@@ -1,8 +1,7 @@
 from datetime import date
 from typing import Optional
 
-from pydantic import BaseModel
-from pydantic_settings import SettingsConfigDict
+from pydantic import BaseModel, Extra
 
 
 class SBooking(BaseModel):
@@ -15,7 +14,8 @@ class SBooking(BaseModel):
     total_cost: int
     total_days: int
 
-    model_config = SettingsConfigDict(from_attributes=True)
+    class Config:
+        from_attributes = True
 
 
 class SBookingInfo(BaseModel):
@@ -24,12 +24,14 @@ class SBookingInfo(BaseModel):
     description: Optional[str]
     services: list[str]
 
-    model_config = SettingsConfigDict(from_attributes=True)
+    class Config:
+        from_attributes = True
 
 
 class SBookingExpanded(SBookingInfo, SBooking):
 
-    model_config = SettingsConfigDict(from_attributes=True)
+    class Config:
+        from_attributes = True
 
 
 class SNewBooking(BaseModel):

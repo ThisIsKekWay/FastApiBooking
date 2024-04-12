@@ -1,11 +1,6 @@
 from datetime import date, datetime
-
-from app.exceptions import (
-    DateBlastFromThePastException,
-    DateConflictException,
-    DateTooFarPlanningException,
-    DateTooLongBookingPeriodException,
-)
+from app.exceptions import (DateConflictException, DateTooLongBookingPeriodException, DateBlastFromThePastException,
+                            DateTooFarPlanningException)
 
 
 def date_validator(date_from: date, date_to: date, location):

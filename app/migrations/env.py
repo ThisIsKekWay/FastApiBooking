@@ -1,14 +1,15 @@
 import sys
 from logging.config import fileConfig
-from os.path import abspath, dirname
+from os.path import dirname, abspath
+
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
-
-from app.bookings.models import Bookings # noqa
-from app.database import DATABASE_URL, Base
-from app.hotels.models import Hotels # noqa
-from app.users.models import Users # noqa
+from app.database import Base, DATABASE_URL
+from app.hotels.models import Hotels
+from app.users.models import Users
+from app.bookings.models import Bookings
 
 sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 # this is the Alembic Config object, which provides
@@ -27,7 +28,7 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
 
-# other values from the config, defined by the needs of .env.py,
+# other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
