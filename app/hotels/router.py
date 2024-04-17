@@ -1,12 +1,12 @@
 from datetime import date
-from typing import Optional, List
+from typing import List, Optional
 
+from fastapi import APIRouter, Depends
 from fastapi_cache.decorator import cache
 
-from app.hotels.schemas import SHotel, SHotelInfo
-from fastapi import APIRouter, Depends
 from app.hotels.dao import HotelDAO
 from app.hotels.dependencies import date_validator
+from app.hotels.schemas import SHotel, SHotelInfo
 
 router = APIRouter(
     prefix="/hotels",

@@ -1,10 +1,15 @@
-from fastapi import Request, Depends
-from jose import jwt, JWTError, ExpiredSignatureError
+from fastapi import Depends, Request
+from jose import ExpiredSignatureError, JWTError, jwt
+
 from app.config import settings
+from app.exceptions import (
+    TokenExpiredException,
+    TokenFormatIsWrongException,
+    TokenIsMissingException,
+    UserIsMissingException,
+)
 from app.users.dao import UsersDAO
 from app.users.models import Users
-from app.exceptions import TokenExpiredException, TokenFormatIsWrongException, TokenIsMissingException, \
-    UserIsMissingException
 
 
 def get_token(request: Request):

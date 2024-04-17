@@ -28,7 +28,4 @@ formatter = CustomJsonFormatter(
 
 logHandler.setFormatter(formatter)
 logger.addHandler(logHandler)
-if settings.MODE == "DEV":
-    logger.setLevel("INFO")
-elif settings.MODE == "TEST":
-    logger.setLevel("DEBUG")
+logger.setLevel(settings.LOG_LEVEL)

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic_settings import SettingsConfigDict
 
 
 class SHotel(BaseModel):
@@ -9,12 +10,10 @@ class SHotel(BaseModel):
     rooms_quantity: int
     image_id: int
 
-    class Config:
-        from_attributes = True
+    model_config = SettingsConfigDict(from_attributes=True)
 
 
 class SHotelInfo(SHotel):
     rooms_left: int
 
-    class Config:
-        from_attributes = True
+    model_config = SettingsConfigDict(from_attributes=True)
