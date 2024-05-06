@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
 
-    model_config = SettingsConfigDict(env_file=".env_non_dev")
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()

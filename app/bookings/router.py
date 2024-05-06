@@ -29,7 +29,7 @@ async def add_booking(
         raise RoomCannotBeBookedException
     booking = SNewBooking.model_validate(booking).model_dump()
     # celery
-    # send_booking_confirmation_email.delay(booking, user.email)
+    send_booking_confirmation_email.delay(booking, user.email)
     # BG_tasks
     # background_tasks.add_task(send_booking_confirmation_email, booking, user.email)
     return booking
